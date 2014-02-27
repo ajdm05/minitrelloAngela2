@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MiniTrello.Api\MiniTrello.Api.csproj">
+      <Project>{BCA0B89B-CCC5-4534-952B-78FD57C8CBB6}</Project>
+      <Name>MiniTrello.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MiniTrello.Data\MiniTrello.Data.csproj">
       <Project>{A854B59C-A908-4926-8CC5-FB4277F3B4DB}</Project>
       <Name>MiniTrello.Data</Name>
