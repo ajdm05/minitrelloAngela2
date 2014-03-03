@@ -22,7 +22,7 @@ angular.module('app.controllers')
         $scope.login = function () {
             var model = { Email: $scope.Email, Password: $scope.Password };
             AccountServices.login(model);
-            //$location.path('/');
+            $location.path('/login');
             return false;
         };
 
