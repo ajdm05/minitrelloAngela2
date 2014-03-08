@@ -6,7 +6,7 @@ using MiniTrello.Api.Models;
 using MiniTrello.Domain.Entities;
 using MiniTrello.Domain.Services;
 using MiniTrello.Api.Controllers.Helpers;
-using MiniTrello.Api.CustomExceptions;
+//using MiniTrello.Api.CustomExceptions;
 namespace MiniTrello.Api.Controllers
 {
     public class AccountController : ApiController
