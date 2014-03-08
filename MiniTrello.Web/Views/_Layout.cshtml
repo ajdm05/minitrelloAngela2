@@ -13,7 +13,7 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header class="navbar navbar-inverse" role="banner" ng-if=" !layout ">@* The 'layout' property is set inside the app.run(..) method on '$stateChangeSuccess' *@
+    <header ng-controller="AccountController" class="navbar navbar-inverse" role="banner" ng-if=" !layout ">@* The 'layout' property is set inside the app.run(..) method on '$stateChangeSuccess' *@
         <div class="container">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".spa-navbar-collapse">
@@ -27,15 +27,22 @@
             <nav class="collapse navbar-collapse spa-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="./about">About</a>
+                        <a href="./boards">Boards</a>
                     </li>
                     <li>
-                        <a href="./contacts">Contacts</a>
+                        <a href="./organizations">Organization</a>
+                    </li>
+                    <li>
+                        <a href="./board/new">New Board</a>
+                    </li>
+                    <li>
+                        <a href="./organization/new">New Organization</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="./login">Sign In</a>
+                        <a ng-hide="isLogged()" href="./login">Sign In</a>
+                        <a ng-show="isLogged()" href="#">Bienvenido Kehimer</a>
                     </li>
                 </ul>
             </nav>

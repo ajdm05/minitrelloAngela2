@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using AttributeRouting.Web.Http;
 using AutoMapper;
 using MiniTrello.Api.Models;
-using MiniTrello.Api.Models.Helper;
 using MiniTrello.Domain.Entities;
 using MiniTrello.Domain.Services;
 using MiniTrello.Api.Controllers.Helpers;
-
+using MiniTrello.Api.CustomExceptions;
 namespace MiniTrello.Api.Controllers
 {
     public class AccountController : ApiController
@@ -26,6 +23,7 @@ namespace MiniTrello.Api.Controllers
             _mappingEngine = mappingEngine;
         }
 
+        [HttpPost]
         [POST("login")]
         public AuthenticationModel Login([FromBody] AccountLoginModel model)
         {
