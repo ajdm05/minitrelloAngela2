@@ -6,7 +6,8 @@ using MiniTrello.Api.Models;
 using MiniTrello.Domain.Entities;
 using MiniTrello.Domain.Services;
 using MiniTrello.Api.Controllers.Helpers;
-//using MiniTrello.Api.CustomExceptions;
+using RestSharp;
+
 namespace MiniTrello.Api.Controllers
 {
     public class AccountController : ApiController
@@ -27,7 +28,8 @@ namespace MiniTrello.Api.Controllers
         [POST("login")]
         public AuthenticationModel Login([FromBody] AccountLoginModel model)
         {
-            var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email && account1.Password == model.Password);
+            var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
+                && BCrypt.Net.BCrypt.Verify(model.Password, account1.Password));
 
             if (account != null)
             {
@@ -49,11 +51,14 @@ namespace MiniTrello.Api.Controllers
         {
             if (AccountHelpers.IsAValidRegister(model))
             {
+                string passwordEncode = BCrypt.Net.BCrypt.HashPassword(model.Password);
                 var account = _mappingEngine.Map<AccountRegisterModel, Account>(model);
                 account.IsArchived = false;
-                Account accountCreated = _writeOnlyRepository.Create(account);
+                account.Password = passwordEncode;
+                Account accountCreated = _writeOnlyRepository.Create(account); 
                 if (accountCreated != null)
                 {
+                    AccountHelpers.SendMessage(model.Email, model.FirstName + " " + model.LastName, 1);
                     AccountHelpers.CreateOrganization(accountCreated);
                     return new SuccessfulMessageResponse("You have been registered succesfully");
                 }
@@ -90,6 +95,7 @@ namespace MiniTrello.Api.Controllers
 
             if (account != null)
             {
+                AccountHelpers.SendMessage(model.Email, account.FirstName + " " + account.LastName, 2);
                 if (model.NewPassword != model.ConfirmPassword)
                     throw new BadRequestException("Password and Confirm Password are different");
                 
@@ -112,5 +118,6 @@ namespace MiniTrello.Api.Controllers
                 return session;
             throw new BadRequestException("Your session has expired");
         }
-    }
+    } 
 }
+

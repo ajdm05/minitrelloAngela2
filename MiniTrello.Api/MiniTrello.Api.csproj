@@ -61,7 +61,13 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -190,6 +196,7 @@
     <Compile Include="Controllers\BoardsController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\Helpers\AccountHelpers.cs" />
+    <Compile Include="Controllers\Helpers\PasswordHelper.cs" />
     <Compile Include="Controllers\Helpers\SuccessfulMessageResponse.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaneController.cs" />
@@ -305,6 +312,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="LICENSE.txt" />
     <Content Include="local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

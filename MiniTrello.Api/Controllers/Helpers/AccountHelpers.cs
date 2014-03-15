@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -7,6 +8,8 @@ using AutoMapper;
 using MiniTrello.Api.Models;
 using MiniTrello.Domain.Entities;
 using MiniTrello.Domain.Services;
+using RestSharp;
+
 
 namespace MiniTrello.Api.Controllers.Helpers
 {
@@ -117,6 +120,31 @@ namespace MiniTrello.Api.Controllers.Helpers
             if (!IsAValidEmail(model.Email))
                 throw new BadRequestException("The email is not valid");
             return true;
+        }
+
+        public static IRestResponse SendMessage(string email, string name,int n)
+        {
+            string txt = "";
+            if (n == 1)
+                txt = "Welcome to MiniTrelloAJDM";
+            else
+                txt = "You want to change your password";
+
+            RestClient client = new RestClient();
+            client.BaseUrl = "https://api.mailgun.net/v2";
+            client.Authenticator =
+                   new HttpBasicAuthenticator("api",
+                                              "key-7c1wwmnzdu06b7b3g55uae5inq455764");
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain",
+                                "app24266.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "MiniTrelloAJDM <postmaster@sandbox33840.mailgun.org>");
+            request.AddParameter("to", email);
+            request.AddParameter("subject", "Hello" + name);
+            request.AddParameter("text", txt);
+            request.Method = Method.POST;
+            return client.Execute(request);
         }
 
     }
