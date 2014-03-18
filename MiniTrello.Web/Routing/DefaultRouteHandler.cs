@@ -24,7 +24,7 @@ namespace App.MiniTrello.Web.Routing
 
             if (filePath == "~/")
             {
-                filePath = "~/views/index.cshtml";
+                filePath = "~/views/Index.cshtml";
             }
             else
             {

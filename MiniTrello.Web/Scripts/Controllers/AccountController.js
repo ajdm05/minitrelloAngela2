@@ -11,7 +11,7 @@ angular.module('app.controllers')
     .controller('AccountController', ['$scope', '$location', '$window', 'AccountServices', function ($scope, $location, $window, AccountServices) {
 
         $scope.hasError = false;
-    $scope.errorMessage = '';
+        $scope.errorMessage = '';
 
         $scope.isLogged = function() {
             return $window.sessionStorage.token != null;
@@ -19,7 +19,7 @@ angular.module('app.controllers')
         
         $scope.loginModel = { Email: '', Password: '' };
 
-    $scope.registerModel = { Email: '', Password: '', FirstName: '', LastName: '', ConfirmPassword: '' };
+        $scope.registerModel = { Email: '', Password: '', FirstName: '', LastName: '', ConfirmPassword: '' };
         
         // TODO: Authorize a user
         $scope.login = function () {
@@ -43,24 +43,37 @@ angular.module('app.controllers')
             //$location.path('/');
         };
 
-    $scope.goToRegister = function() {
-        $location.path('/register');
-    };
-    $scope.goToLogin = function() {
-        $location.path('/login');
-    };
+        $scope.goToRegister = function() {
+            $location.path('/register');
+        };
 
-    $scope.register = function() {
-        AccountServices
-            .register($scope.registerModel)
-            .success(function (data, status, headers, config) {
-                console.log(data);
-                $scope.goToLogin();
-            })
-            .error(function (data, status, headers, config) {
-                console.log(data);
-            });
-    };
+        $scope.goToLogin = function() {
+            $location.path('/login');
+        };
+
+        $scope.register = function() {
+            AccountServices
+                .register($scope.registerModel)
+                .success(function (data, status, headers, config) {
+                    console.log(data);
+                    $scope.goToLogin();
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(data);
+                });
+        };
+
+        $scope.forgotPassword = function () {
+            AccountServices
+                .register($scope.forgotPasswordModel)
+                .success(function (data, status, headers, config) {
+                    console.log(data);
+                    $scope.goToLogin();
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(data);
+                });
+        };
 
         $scope.$on('$viewContentLoaded', function () {
             $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });

@@ -39,6 +39,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataObjects\AccountForgottenPasswordModel.cs" />
+    <Compile Include="DataObjects\AccountLoginModel.cs" />
+    <Compile Include="DataObjects\AccountModel.cs" />
+    <Compile Include="DataObjects\AccountRegisterModel.cs" />
+    <Compile Include="DataObjects\AccountUpdateProfileModel.cs" />
+    <Compile Include="DataObjects\ActivityDoneModel.cs" />
+    <Compile Include="DataObjects\ActivityModel.cs" />
+    <Compile Include="DataObjects\AddBoardToOrganizationModel.cs" />
+    <Compile Include="DataObjects\AdministratorModel.cs" />
+    <Compile Include="DataObjects\AuthenticationModel.cs" />
+    <Compile Include="DataObjects\BoardDetailsModel.cs" />
+    <Compile Include="DataObjects\BoardMembersModel.cs" />
+    <Compile Include="DataObjects\BoardModel.cs" />
+    <Compile Include="DataObjects\BoardsCreationModel.cs" />
+    <Compile Include="DataObjects\BoardsMembersList.cs" />
+    <Compile Include="DataObjects\BoardsRemovedModel.cs" />
+    <Compile Include="DataObjects\CardModel.cs" />
+    <Compile Include="DataObjects\CardMovedModel.cs" />
+    <Compile Include="DataObjects\CardRemoveModel.cs" />
+    <Compile Include="DataObjects\CardsCreationModel.cs" />
+    <Compile Include="DataObjects\LaneModel.cs" />
+    <Compile Include="DataObjects\LanesCreationModel.cs" />
+    <Compile Include="DataObjects\ListActivities.cs" />
+    <Compile Include="DataObjects\ListMyActivitiesBoardModel.cs" />
+    <Compile Include="DataObjects\MyBoardsModel.cs" />
+    <Compile Include="DataObjects\OrganizationArchiveModel.cs" />
+    <Compile Include="DataObjects\OrganizationCreationModel.cs" />
+    <Compile Include="DataObjects\OrganizationGetModel.cs" />
+    <Compile Include="DataObjects\OrganizationModel.cs" />
+    <Compile Include="DataObjects\RenameBoardModel.cs" />
+    <Compile Include="DataObjects\SessionModel.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\Board.cs" />

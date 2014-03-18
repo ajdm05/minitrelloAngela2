@@ -17,7 +17,7 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
         $httpProvider.defaults.headers.get = { 'Content-Type': 'application/json' };
 
         $stateProvider
-            .state('home', {
+            .state('MiniTrello', {
                 url: '/',
                 templateUrl: '/views/index',
                 controller: 'HomeController'
@@ -48,6 +48,11 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 url: '/board/:boardId',
                 templateUrl: '/views/boardDetail',
                 controller: 'BoardController'
+            })
+            .state('forgotPassword', {
+                url: '/forgotPassword',
+                templateUrl: '/views/forgotPassword',
+                controller: 'AccountController'
             })
             .state('otherwise', {
                 url: '*path',
