@@ -7,5 +7,6 @@ namespace MiniTrello.Api.Models
 {
     public class OrganizationArchiveModel
     {
+
     }
 }
