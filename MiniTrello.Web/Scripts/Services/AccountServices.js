@@ -9,19 +9,19 @@ angular.module('app.services',[]).factory('AccountServices', ['$http', function 
     var baseUrl = baseRemoteUrl;
 
     account.login = function (model) {
-        return $http.post(baseLocalUrl + '/login', model);
+        return $http.post(baseUrl + '/login', model);
     };
 
     account.register = function (model) {
-        return $http.post(baseLocalUrl + '/register', model);
+        return $http.post(baseUrl + '/register', model);
     };
 
     account.forgotPassword = function (model) {
-        return $http.post(baseLocalUrl + '/forgotPassword' + $window.sessionStorage.token, model);
+        return $http.post(baseUrl + '/forgotPassword' + $window.sessionStorage.token, model);
     };
 
     account.updateProfile = function(model) {
-        return $http.post(baseLocalUrl + '/updateProfile' + $window.sessionStorage.token, model);
+        return $http.post(baseUrl + '/updateProfile' + $window.sessionStorage.token, model);
     };
 
     return account;

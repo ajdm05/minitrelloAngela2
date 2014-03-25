@@ -9,19 +9,19 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     var baseUrl = baseRemoteUrl;
 
     board.getBoardsForLoggedUser = function() {
-        return $http.get(baseLocalUrl + '/boards/' + $window.sessionStorage.token);
+        return $http.get(baseUrl + '/boards/' + $window.sessionStorage.token);
     };
 
     board.getBoardDetails = function () {
-        return $http.get(baseLocalUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);
+        return $http.get(baseUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);
     };
 
     board.createBoard = function () {
-        return $http.post(baseLocalUrl + '/boards/create/' + $window.sessionStorage.token);
+        return $http.post(baseUrl + '/boards/create/' + $window.sessionStorage.token);
     };
 
     board.deletBoard = function () {
-        return $http.delete(baseLocalUrl + '/boards/create/' + $window.sessionStorage.token);
+        return $http.delete(baseUrl + '/boards/create/' + $window.sessionStorage.token);
     };
 
     return board;
