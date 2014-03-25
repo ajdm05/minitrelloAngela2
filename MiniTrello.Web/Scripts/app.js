@@ -55,7 +55,7 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 controller: 'AccountController'
             })
             .state('organizations', {
-                url: '/organizations/',
+                url: '/organizations',
                 templateUrl: '/views/organizations',
                 controller: 'OrganizationController'
             })

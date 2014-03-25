@@ -29,7 +29,7 @@ angular.module('app.controllers')
               .success(function (data, status, headers, config) {
                   
                   $window.sessionStorage.token = data.Token;
-                  $location.path('/boards/');
+                  $location.path('/organizations');
               })
               .error(function (data, status, headers, config) {
                 // Erase the token if the user fails to log in
@@ -62,6 +62,8 @@ angular.module('app.controllers')
                     console.log(data);
                 });
         };
+
+    
 
         $scope.forgotPassword = function () {
             AccountServices
