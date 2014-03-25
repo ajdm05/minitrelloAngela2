@@ -157,6 +157,7 @@
     <Content Include="Scripts\Controllers\BoardController.js" />
     <Content Include="Scripts\Controllers\ErrorController.js" />
     <Content Include="Scripts\Controllers\HomeController.js" />
+    <Content Include="Scripts\Controllers\OrganizationController.js" />
     <Content Include="Scripts\Directives\directives.js" />
     <Content Include="Scripts\Directives\directives.spec.js">
       <DependentUpon>directives.js</DependentUpon>
@@ -167,6 +168,9 @@
     </Content>
     <Content Include="Scripts\Services\AccountServices.js" />
     <Content Include="Scripts\Services\BoardServices.js" />
+    <Content Include="Scripts\Services\CardServices.js" />
+    <Content Include="Scripts\Services\LaneServices.js" />
+    <Content Include="Scripts\Services\OrganizationServices.js" />
     <Content Include="Scripts\vendor\angular-csp.css" />
     <Content Include="Scripts\vendor\angular-ui-router.js" />
     <Content Include="Scripts\vendor\angular-ui-router.min.js" />
@@ -518,6 +522,7 @@
     <Content Include="Views\forgotPassword.cshtml" />
     <Content Include="Views\cards.cshtml" />
     <Content Include="Views\lanes.cshtml" />
+    <Content Include="Views\organizations.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

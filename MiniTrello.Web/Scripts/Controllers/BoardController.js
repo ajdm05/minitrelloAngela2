@@ -19,10 +19,10 @@ angular.module('app.controllers')
 
         $scope.boards = [];
 
-        var board = { Id: 1, Name: 'Myboard1', Description: 'Description1' };
-        var board1 = { Id: 2, Name: 'Myboard2', Description: 'Description2' };
-        $scope.boards.push(board);
-    $scope.boards.push(board1);
+       // var board = { Id: 1, Name: 'Myboard1', Description: 'Description1' };
+       // var board1 = { Id: 2, Name: 'Myboard2', Description: 'Description2' };
+       // $scope.boards.push(board);
+       // $scope.boards.push(board1);
         
 
         $scope.getBoardsForLoggedUser = function () {
@@ -30,7 +30,7 @@ angular.module('app.controllers')
             boardServices
                 .getBoardsForLoggedUser()
               .success(function (data, status, headers, config) {
-                    $scope.boards = data;
+                    $scope.boards = data.boards;
                 })
               .error(function (data, status, headers, config) {
                 console.log(data);
@@ -38,9 +38,22 @@ angular.module('app.controllers')
             //$location.path('/');
         };
 
+        $scope.getBoardsDetails = function () {
+
+            boardServices
+                .getBoardDetails()
+              .success(function (data, status, headers, config) {
+                  $scope.boards = data;
+              })
+              .error(function (data, status, headers, config) {
+                  console.log(data);
+              });
+            //$location.path('/');
+        };
+
     if ($scope.boardDetailId > 0)
     {
-        //get board details
+       //
     }
     else
     {

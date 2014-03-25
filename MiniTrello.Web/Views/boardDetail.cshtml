@@ -1,4 +1,55 @@
-﻿<div class="row">
-    
-    This is the board detail
+﻿<div class="row" ng-show="hasError">
+    <p>{{errorMessage}}</p>
+</div>
+<div class="row" style="margin-top:20px">
+        <form role="form">
+            <fieldset>
+                <h2> {{board.Name}} </h2>
+                <hr class="colorgraph">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Panel 1
+                                    </h3>
+                                    <span class="pull-right clickable"><i class="glyphicon glyphicon-minus"></i></span>
+                                </div>
+                                <div class="panel-body">
+                                    Panel content
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Panel 2
+                                    </h3>
+                                    <span class="pull-right clickable"><i class="glyphicon glyphicon-minus"></i></span>
+                                </div>
+                                <div class="panel-body">
+                                    Panel content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Panel 2
+                                </h3>
+                                <span class="pull-right clickable"><i class="glyphicon glyphicon-minus"></i></span>
+                            </div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </div>
+                    <a href="./register" class="btn btn-link pull-right">Add Lane</a>
+                </div>
+            </fieldset>
+        </form>
 </div>

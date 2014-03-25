@@ -40,12 +40,12 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 controller: 'AccountController'
             })
             .state('boards', {
-                url: '/boards',
+                url: '/boards/',
                 templateUrl: '/views/boards',
                 controller: 'BoardController'
             })
             .state('boardDetail', {
-                url: '/board/:boardId',
+                url: '/boards/:boardId',
                 templateUrl: '/views/boardDetail',
                 controller: 'BoardController'
             })
@@ -53,6 +53,11 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 url: '/forgotPassword',
                 templateUrl: '/views/forgotPassword',
                 controller: 'AccountController'
+            })
+            .state('organizations', {
+                url: '/organizations/',
+                templateUrl: '/views/organizations',
+                controller: 'OrganizationController'
             })
             .state('otherwise', {
                 url: '*path',

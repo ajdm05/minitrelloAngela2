@@ -58,6 +58,37 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Board could not be added");
         }
 
+       /* [GET("/organizations/{token}")]
+        public List<OrganizationListModel> MyOrganizations(string token)
+        {
+            var session = IsTokenExpired(token);
+            var account = _readOnlyRepository.GetById<Account>(session.User.Id);
+            if (account != null)
+            {
+                var organizations = new OrganizationListModel();
+                foreach (var member in account.Organizations)
+                {
+                    var myOrganizations = _mappingEngine.Map<OrganizationModel, AccountBoardModel>(member);
+                    organizations.Members.Add(myOrganizations);
+                }
+                return organizations;
+            }
+            throw new BadRequestException("You can't see the members of this Board");
+
+        }*/
+        [GET("organizations/{token}")]
+        public List<OrganizationModel> GetAllForUser(string token)
+        {
+            var session = IsTokenExpired(token);
+            //obtener el usuario que pertenece al token
+            //validar la session
+            //var account = _readOnlyRepository.GetById<Account>(1);
+            var mappedOrganizationModelList = _mappingEngine.Map<IEnumerable<Organization>, IEnumerable<OrganizationModel>>(session.User.Organizations).ToList();
+            return mappedOrganizationModelList;
+            //var organizations = Builder<OrganizationModel>.CreateListOfSize(10).Build().ToList();
+            //return organizations;
+        }
+
         public Sessions IsTokenExpired(string token)
         {
             var session = _readOnlyRepository.First<Sessions>(session1 => session1.Token == token);

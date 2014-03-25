@@ -18,8 +18,8 @@ angular.module('app.controllers')
         };
         
         $scope.loginModel = { Email: '', Password: '' };
-
         $scope.registerModel = { Email: '', Password: '', FirstName: '', LastName: '', ConfirmPassword: '' };
+        
         
         // TODO: Authorize a user
         $scope.login = function () {
@@ -29,7 +29,7 @@ angular.module('app.controllers')
               .success(function (data, status, headers, config) {
                   
                   $window.sessionStorage.token = data.Token;
-                  $location.path('/boards');
+                  $location.path('/boards/');
               })
               .error(function (data, status, headers, config) {
                 // Erase the token if the user fails to log in
@@ -73,6 +73,13 @@ angular.module('app.controllers')
                 .error(function (data, status, headers, config) {
                     console.log(data);
                 });
+        };
+
+        $scope.logOut = function () {
+            if ($window.sessionStorage.token != null) {
+                $window.sessionStorage.token = null;
+                $scope.goToLogin();
+            }  
         };
 
         $scope.$on('$viewContentLoaded', function () {

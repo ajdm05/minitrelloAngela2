@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title ng-bind="title">@(PageData["title"] ?? "MiniTrelloA")</title>
+    <title ng-bind="title">@(PageData["title"] ?? "MiniTrello")</title>
     <meta name="description" content="@PageData["description"]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @Styles.Render("~/content/css/app")
@@ -30,13 +30,16 @@
                         <a href="./boards">Boards</a> 
                     </li>
                     <li>
-                        <a href="./organizations">Organization</a> 
+                        <a href="/organizations">Organization</a> 
                     </li>
                     <li>
-                        <a href="./board/new">New Board</a>
+                        <a href="/board/new">New Board</a>
                     </li>
                     <li>
-                        <a href="./organization/new">New Organization</a>
+                        <a href="/organization/new">New Organization</a>
+                    </li>
+                    <li>
+                        <a ng-click="logOut()" class="btn btn-link pull-left">Log Out</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

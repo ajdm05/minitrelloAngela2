@@ -135,7 +135,7 @@ namespace MiniTrello.Api.Controllers
 
         }
 
-        [POST("/boards/myBoards/{token}")]
+        [GET("/boards/{token}")]
         public MyBoardsModel MyBoards(string token)
         {
             var session = IsTokenExpired(token);

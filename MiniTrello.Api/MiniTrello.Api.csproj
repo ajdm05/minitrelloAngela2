@@ -205,6 +205,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountBoardModel.cs" />
     <Compile Include="Models\AccountForgottenPasswordModel.cs" />
     <Compile Include="Models\AccountLoginModel.cs" />
     <Compile Include="Models\AccountModel.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\MyBoardsModel.cs" />
     <Compile Include="Models\OrganizationArchiveModel.cs" />
     <Compile Include="Models\OrganizationCreationModel.cs" />
+    <Compile Include="Models\OrganizationListModel.cs" />
     <Compile Include="Models\OrganizationModel.cs" />
     <Compile Include="Models\RenameBoardModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
