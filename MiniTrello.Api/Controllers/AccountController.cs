@@ -6,6 +6,8 @@ using MiniTrello.Api.Models;
 using MiniTrello.Domain.Entities;
 using MiniTrello.Domain.Services;
 using MiniTrello.Api.Controllers.Helpers;
+using BCrypt.Net;
+
 using RestSharp;
 
 namespace MiniTrello.Api.Controllers
@@ -28,8 +30,11 @@ namespace MiniTrello.Api.Controllers
         [POST("login")]
         public AuthenticationModel Login([FromBody] AccountLoginModel model)
         {
-            var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
-                && BCrypt.Net.BCrypt.Verify(model.Password, account1.Password));
+            string passwordEncode = BCrypt.Net.BCrypt.HashPassword(model.Password, BCrypt.Net.BCrypt.GenerateSalt(12));
+            //var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
+            //    && BCrypt.Net.BCrypt.Verify(model.Password, account1.Password));
+            var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email
+                && passwordEncode ==  account1.Password);
            // var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
             //    && account1.Password == model.Password);
 
@@ -51,21 +56,26 @@ namespace MiniTrello.Api.Controllers
         [POST("register")]
         public SuccessfulMessageResponse Register([FromBody] AccountRegisterModel model)
         {
-            if (AccountHelpers.IsAValidRegister(model))
+            var emailExist = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email);
+            if (emailExist != null)
             {
-                string passwordEncode = BCrypt.Net.BCrypt.HashString(model.Password);
-                var account = _mappingEngine.Map<AccountRegisterModel, Account>(model);
-                account.IsArchived = false;
-                account.Password = passwordEncode;
-                Account accountCreated = _writeOnlyRepository.Create(account); 
-                if (accountCreated != null)
+                if (AccountHelpers.IsAValidRegister(model))
                 {
-                    AccountHelpers.SendMessage(model.Email, model.FirstName + " " + model.LastName, 1);
-                    AccountHelpers.CreateOrganization(accountCreated);
-                    return new SuccessfulMessageResponse("You have been registered succesfully");
+                    string passwordEncode = BCrypt.Net.BCrypt.HashPassword(model.Password, BCrypt.Net.BCrypt.GenerateSalt(12));
+                    var account = _mappingEngine.Map<AccountRegisterModel, Account>(model);
+                    account.IsArchived = false;
+                    account.Password = passwordEncode;
+                    Account accountCreated = _writeOnlyRepository.Create(account);
+                    if (accountCreated != null)
+                    {
+                        AccountHelpers.SendMessage(model.Email, model.FirstName + " " + model.LastName, 1);
+                        AccountHelpers.CreateOrganization(accountCreated);
+                        return new SuccessfulMessageResponse("You have been registered succesfully");
+                    }
                 }
+                throw new BadRequestException("The Account couldn't be created");
             }
-            throw new BadRequestException("The Account couldn't be created");
+            throw new BadRequestException("The Email is already registered");
         }
 
         //[AcceptVerbs ("PUT")]
