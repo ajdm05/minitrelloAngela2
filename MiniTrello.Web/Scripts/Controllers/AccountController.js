@@ -63,8 +63,6 @@ angular.module('app.controllers')
                 });
         };
 
-    
-
         $scope.forgotPassword = function () {
             AccountServices
                 .register($scope.forgotPasswordModel)
