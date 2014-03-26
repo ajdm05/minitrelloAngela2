@@ -525,6 +525,9 @@
     <Content Include="Views\organizations.cshtml" />
     <Content Include="Views\putToken.cshtml" />
     <Content Include="Views\addOrganization.cshtml" />
+    <Content Include="Views\addBoard.cshtml" />
+    <Content Include="Views\addCard.cshtml" />
+    <Content Include="Views\addLane.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
