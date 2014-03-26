@@ -128,7 +128,7 @@ namespace MiniTrello.Api.Controllers.Helpers
             if (n == 1)
                 txt = "Welcome to MiniTrelloAJDM";
             else
-                txt = "You want to change your password";
+                txt = "You want to change your password; please enter to this link: ";
 
             RestClient client = new RestClient();
             client.BaseUrl = "https://api.mailgun.net/v2";

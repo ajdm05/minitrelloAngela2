@@ -98,6 +98,20 @@ namespace MiniTrello.Api.Controllers
         }
 
         [POST("forgottenPassword")]
+        public SuccessfulMessageResponse ChangePasswordLink([FromBody] AccountForgottenPasswordModel model)
+        {
+            var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email);
+
+            if (account != null)
+            {
+                AccountHelpers.SendMessage(model.Email, account.FirstName + " " + account.LastName, 2);
+                
+            }
+            throw new BadRequestException("Your email is not registered");
+        }
+
+
+        [POST("changePassword")]
         public SuccessfulMessageResponse ChangePassword([FromBody] AccountForgottenPasswordModel model)
         {
             var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email && account1.Password == model.OldPassword);
