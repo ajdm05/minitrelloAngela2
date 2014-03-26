@@ -30,6 +30,7 @@ angular.module('app.controllers')
             boardServices
                 .getBoardsForLoggedUser($scope.OrganizationId)
               .success(function (data, status, headers, config) {
+                    console.log(data);
                     $scope.boards = data;
                 })
               .error(function (data, status, headers, config) {

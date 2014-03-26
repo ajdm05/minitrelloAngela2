@@ -157,7 +157,7 @@ namespace MiniTrello.Api.Controllers
          
         }
         */
-        [GET("{idOrganization}/boards/{token}")]
+        [GET("/boards/{idOrganization}/{token}")]
         public List<BoardModel> MyBoards(string token, int idOrganization)
         {
             var session = IsTokenExpired(token);
