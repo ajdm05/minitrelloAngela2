@@ -69,8 +69,11 @@ namespace MiniTrello.Api.Controllers
                  var organizations = new List<OrganizationModel>();
                  foreach (var member in account.Organizations)
                  {
-                     var myOrganizations = _mappingEngine.Map<Organization, OrganizationModel>(member);
-                     organizations.Add(myOrganizations);
+                     if (member.IsArchived == false)
+                     {
+                         var myOrganizations = _mappingEngine.Map<Organization, OrganizationModel>(member);
+                         organizations.Add(myOrganizations);
+                     }  
                  }
                  return organizations;
              }
