@@ -28,7 +28,7 @@ namespace MiniTrello.Api.Controllers
         [POST("login")]
         public AuthenticationModel Login([FromBody] AccountLoginModel model)
         {
-            //var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
+           // var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
             //    && BCrypt.Net.BCrypt.Verify(model.Password, account1.Password));
             var account = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email 
                 && account1.Password == model.Password);
@@ -53,11 +53,11 @@ namespace MiniTrello.Api.Controllers
         {
             if (AccountHelpers.IsAValidRegister(model))
             {
-                //string passwordEncode = BCrypt.Net.BCrypt.HashPassword(model.Password);
+                string passwordEncode = BCrypt.Net.BCrypt.HashString(model.Password);
                 var account = _mappingEngine.Map<AccountRegisterModel, Account>(model);
                 account.IsArchived = false;
-                //account.Password = passwordEncode;
-                account.Password = model.Password;
+                account.Password = passwordEncode;
+                //account.Password = model.Password;
                 Account accountCreated = _writeOnlyRepository.Create(account); 
                 if (accountCreated != null)
                 {

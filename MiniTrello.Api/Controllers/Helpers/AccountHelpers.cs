@@ -141,7 +141,7 @@ namespace MiniTrello.Api.Controllers.Helpers
             request.Resource = "{domain}/messages";
             request.AddParameter("from", "MiniTrelloAJDM <postmaster@sandbox33840.mailgun.org>");
             request.AddParameter("to", email);
-            request.AddParameter("subject", "Hello" + name);
+            request.AddParameter("subject", "Hello " + name);
             request.AddParameter("text", txt);
             request.Method = Method.POST;
             return client.Execute(request);
