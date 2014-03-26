@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
-            <a href="./addOrganization" class="btn btn-link pull-left">Add Organization</a>
+            <a href="/addOrganization" class="btn btn-link pull-left">Add Organization</a>
         </div>
     </div>
     <div class="row" ng-repeat="organization in organizations">
@@ -13,7 +13,7 @@
                              class="img-rounded img-responsive" />
                     </div>
                     <div class="col-xs-9 col-md-9 section-box">
-                        <a href="/organizations/{{organization.Id}}">
+                        <a href="./{{organization.Id}}/boards">
                             <h2>
                                 {{organization.Title}}
                             </h2>

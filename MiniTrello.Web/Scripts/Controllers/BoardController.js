@@ -12,7 +12,7 @@ angular.module('app.controllers')
 
 
         $scope.boardDetailId = $stateParams.boardId;
-        $scope.IdOrganization = $stateParams.IdOrganization;
+        $scope.OrganizationId = $stateParams.IdOrganization;
 
         //console.log($location.search().boardId);
 
@@ -28,7 +28,7 @@ angular.module('app.controllers')
 
         $scope.getBoardsForLoggedUser = function () {
             boardServices
-                .getBoardsForLoggedUser($scope.IdOrganization)
+                .getBoardsForLoggedUser($scope.OrganizationId)
               .success(function (data, status, headers, config) {
                     $scope.boards = data;
                 })

@@ -40,7 +40,7 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 controller: 'AccountController'
             })
             .state('boards', {
-                url: '/boards/',
+                url: ':IdOrganization/boards',
                 templateUrl: '/views/boards',
                 controller: 'BoardController'
             })
