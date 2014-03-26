@@ -11,7 +11,8 @@ angular.module('app.controllers')
     .controller('BoardController', ['$scope', '$location', '$window', 'BoardServices','$stateParams', function ($scope, $location, $window, boardServices, $stateParams) {
 
 
-       $scope.boardDetailId = $stateParams.boardId;
+        $scope.boardDetailId = $stateParams.boardId;
+        $scope.IdOrganization = $stateParams.IdOrganization;
 
         //console.log($location.search().boardId);
 
@@ -26,11 +27,10 @@ angular.module('app.controllers')
         
 
         $scope.getBoardsForLoggedUser = function () {
-
             boardServices
-                .getBoardsForLoggedUser()
+                .getBoardsForLoggedUser($scope.IdOrganization)
               .success(function (data, status, headers, config) {
-                    $scope.boards = data.boards;
+                    $scope.boards = data;
                 })
               .error(function (data, status, headers, config) {
                 console.log(data);

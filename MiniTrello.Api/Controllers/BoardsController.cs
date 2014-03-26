@@ -135,7 +135,7 @@ namespace MiniTrello.Api.Controllers
 
         }
 
-        [GET("/boards/{token}")]
+        /*[GET("/boards/{token}")]
         public MyBoardsModel MyBoards(string token)
         {
             var session = IsTokenExpired(token);
@@ -145,15 +145,39 @@ namespace MiniTrello.Api.Controllers
                 var boards = new MyBoardsModel();
                 foreach (var member in account.Boards)
                 {
-                    var myBoards = _mappingEngine.Map<Board, BoardModel>(member);
-                    boards.Members.Add(myBoards);
+                    if (member.IsArchived == false)
+                    {
+                        var myBoards = _mappingEngine.Map<Board, BoardModel>(member);
+                        boards.Members.Add(myBoards);
+                    }
                 }
                 return boards;
             }
             throw new BadRequestException("You can't see the members of this Board");
          
         }
+        */
+        [GET("{idOrganization}/boards/{token}")]
+        public List<BoardModel> MyBoards(string token, int idOrganization)
+        {
+            var session = IsTokenExpired(token);
+            var account = _readOnlyRepository.GetById<Organization>(idOrganization);
+            if (account != null)
+            {
+                var boards = new List<BoardModel>();
+                foreach (var member in account.Boards)
+                {
+                    if (member.IsArchived == false)
+                    {
+                        var myBoards = _mappingEngine.Map<Board, BoardModel>(member);
+                        boards.Add(myBoards);
+                    }
+                }
+                return boards;  
+            }
+            throw new BadRequestException("You can't see the members of this Board");
 
+        }
         [POST("/boards/{BoardId}/{token}")]
         public BoardDetailsModel BoardsDetails(string token, long BoardId)
         {
