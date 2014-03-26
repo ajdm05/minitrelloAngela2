@@ -8,11 +8,11 @@ angular.module('app.controllers')
 
 
     // Path: /login
-    .controller('BoardController', ['$scope', '$location', '$window', 'BoardServices','$stateParams', function ($scope, $location, $window, boardServices, $stateParams) {
+    .controller('BoardController', ['$scope', '$location', '$window', , '$stateParams', 'BoardServices', function ($scope, $location, $window, $stateParams, boardServices) {
 
 
         $scope.boardDetailId = $stateParams.boardId;
-        $scope.OrganizationId = $stateParams.IdOrganization;
+        $scope.organizationId = $stateParams.IdOrganization;
 
         //console.log($location.search().boardId);
 
@@ -28,7 +28,7 @@ angular.module('app.controllers')
 
         $scope.getBoardsForLoggedUser = function () {
             boardServices
-                .getBoardsForLoggedUser($scope.OrganizationId)
+                .getBoardsForLoggedUser($scope.organizationId)
               .success(function (data, status, headers, config) {
                     console.log(data);
                     $scope.boards = data;
