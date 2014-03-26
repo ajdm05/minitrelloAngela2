@@ -57,7 +57,7 @@ namespace MiniTrello.Api.Controllers
         public SuccessfulMessageResponse Register([FromBody] AccountRegisterModel model)
         {
             var emailExist = _readOnlyRepository.First<Account>(account1 => account1.Email == model.Email);
-            if (emailExist != null)
+            if (emailExist == null)
             {
                 if (AccountHelpers.IsAValidRegister(model))
                 {
