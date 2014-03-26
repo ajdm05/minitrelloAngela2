@@ -59,6 +59,11 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 templateUrl: '/views/organizations',
                 controller: 'OrganizationController'
             })
+            .state('organizations', {
+                url: '/addOrganization',
+                templateUrl: '/views/addOrganization',
+                controller: 'OrganizationController'
+            })
             .state('otherwise', {
                 url: '*path',
                 templateUrl: '/views/404',

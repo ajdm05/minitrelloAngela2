@@ -524,6 +524,7 @@
     <Content Include="Views\lanes.cshtml" />
     <Content Include="Views\organizations.cshtml" />
     <Content Include="Views\putToken.cshtml" />
+    <Content Include="Views\addOrganization.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

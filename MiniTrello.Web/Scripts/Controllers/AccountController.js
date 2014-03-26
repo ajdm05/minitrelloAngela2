@@ -68,9 +68,9 @@ angular.module('app.controllers')
                 })
                 .error(function (data, status, headers, config) {
                     console.log(data);
-                    $scope.errorMessage = 'Email is alredy registered';
+                    $scope.errorMessage = 'Email is already registered';
                     $scope.hasError = true;
-                    $scope.message = 'Email is alredy registered';
+                    $scope.message = 'Email is already registered';
                 });
         };
 

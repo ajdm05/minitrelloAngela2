@@ -12,6 +12,13 @@ angular.module('app.services').factory('OrganizationServices', ['$http', '$windo
         return $http.get(baseRemoteUrl + '/organizations/' + $window.sessionStorage.token);
     };
 
+    organization.createNewOrganizationForLoggedUser = function (data) {
+        return $http.get(baseRemoteUrl + '/organizations/create/' + $window.sessionStorage.token);
+    };
+
+    organization.archiveOrganizationForLoggedUser = function (IdOrganization) {
+        return $http.get(baseRemoteUrl + '/organizations/delete/' + $window.sessionStorage.token);
+    };
     return organization;
 
 }]);
