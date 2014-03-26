@@ -157,11 +157,11 @@ namespace MiniTrello.Api.Controllers
          
         }
         */
-        [GET("boards/{idOrganization}/{token}")]
-        public List<BoardModel> MyBoards(string token, int idOrganization)
+        [GET("boards/{IdOrganization}/{token}")]
+        public List<BoardModel> MyBoards(string token, int IdOrganization)
         {
             var session = IsTokenExpired(token);
-            var account = _readOnlyRepository.GetById<Organization>(idOrganization);
+            var account = _readOnlyRepository.GetById<Organization>(IdOrganization);
             if (account != null)
             {
                 var boards = new List<BoardModel>();
