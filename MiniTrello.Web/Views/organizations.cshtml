@@ -1,4 +1,9 @@
 ﻿<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="./addOrganization" class="btn btn-link pull-left">Add Organization</a>
+        </div>
+    </div>
     <div class="row" ng-repeat="organization in organizations">
         <div class="col-md-6">
             <div class="well well-sm">
@@ -6,11 +11,6 @@
                     <div class="col-xs-3 col-md-3 text-center">
                         <img src="http://bootsnipp.com/apple-touch-icon-114x114-precomposed.png" alt="bootsnipp"
                              class="img-rounded img-responsive" />
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <a href="./addOrganization" class="btn btn-link pull-left">Sign In</a>
-                        </div>
                     </div>
                     <div class="col-xs-9 col-md-9 section-box">
                         <a href="/organizations/{{organization.Id}}">
