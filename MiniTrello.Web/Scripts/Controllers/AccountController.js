@@ -51,6 +51,14 @@ angular.module('app.controllers')
             $location.path('/login');
         };
 
+        $scope.goToForgotPassword = function () {
+            $location.path('/forgotPassword');
+        };
+
+        $scope.goToRegister = function () {
+            $location.path('/updateProfile');
+        };
+
         $scope.register = function() {
             AccountServices
                 .register($scope.registerModel)
