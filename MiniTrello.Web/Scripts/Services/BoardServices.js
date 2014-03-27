@@ -14,7 +14,8 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     };*/
 
     board.getBoardsForLoggedUser = function (organizationId) {
-        return $http.get(baseUrl + '/boards/' + $scope.window.sessionStorage.token);
+
+        return $http.get(baseUrl + '/boards/' + organizationId + '/' + $scope.window.sessionStorage.token);
         //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };
 

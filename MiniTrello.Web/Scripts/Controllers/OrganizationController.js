@@ -10,8 +10,8 @@ angular.module('app.controllers')
     // Path: /login
     .controller('OrganizationController', ['$scope', '$location', '$window', 'OrganizationServices', '$stateParams', function ($scope, $location, $window, organizationServices, $stateParams) {
 
-
         $scope.boardDetailId = $stateParams.boardId;
+        $scope.organizationId = $stateParams.organizationId;
         //console.log($location.search().boardId);
         console.log($scope.boardDetailId);
         $scope.addNewOrganizationModel = { Title: '', Description: '' };
