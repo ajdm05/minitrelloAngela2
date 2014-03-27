@@ -9,7 +9,8 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     var baseUrl = baseRemoteUrl;
 
     board.getBoardsForLoggedUser = function (organizationId) {
-        return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
+        return $http.get(baseUrl + '/boards/' + organizationId);
+        //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };
 
     board.getBoardDetails = function () {
