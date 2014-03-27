@@ -20,7 +20,9 @@ angular.module('app.services',[]).factory('AccountServices', ['$http', function 
         return $http.post(baseUrl + '/forgotPassword', model);
     };
 
-    account.updateProfile = function(model) {
+    account.updateProfile = function (model) {
+        console.log("ModelUpdate");
+        console.log(model);
         return $http.put(baseUrl + '/updateProfile' + $window.sessionStorage.token, model);
     };
 

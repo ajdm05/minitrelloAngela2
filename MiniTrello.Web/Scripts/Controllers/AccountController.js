@@ -80,7 +80,6 @@ angular.module('app.controllers')
                 .updateProfile($scope.updateProfileModel)
                 .success(function (data, status, headers, config) {
                     console.log(data);
-                    $location.path('/organizations');
                 })
                 .error(function (data, status, headers, config) {
                     console.log(data);
@@ -88,6 +87,7 @@ angular.module('app.controllers')
                     $scope.hasError = true;
                     $scope.message = 'Could not be updated';
                 });
+            $location.path('/organizations');
         };
 
         $scope.forgotPassword = function () {
