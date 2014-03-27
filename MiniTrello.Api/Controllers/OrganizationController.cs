@@ -41,9 +41,9 @@ namespace MiniTrello.Api.Controllers
          
         }
 
-        //[HttpPost]
-        //[AcceptVerbs("PUT")]
-        [POST("organization/delete/{organizationId}/{token}")]
+        [HttpPost]
+        [AcceptVerbs("DELETE")]
+        [DELETE("organization/delete/{organizationId}/{token}")]
         public SuccessfulMessageResponse Archive(long organizationId, string token)
         {
             var session = IsTokenExpired(token);

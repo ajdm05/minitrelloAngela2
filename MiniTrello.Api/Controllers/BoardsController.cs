@@ -51,6 +51,7 @@ namespace MiniTrello.Api.Controllers
             throw  new BadRequestException("Member or Board does not exist");
         }
 
+        [HttpPost]
         [POST("/boards/create/{token}")]
         public BoardModel CreateBoard([FromBody] BoardsCreationModel model, string token)
         {

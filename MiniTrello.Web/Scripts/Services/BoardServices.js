@@ -23,12 +23,12 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
         return $http.get(baseUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);
     };
 
-    board.createBoard = function () {
+    board.createNewBoardForLoggedUser = function () {
         return $http.post(baseUrl + '/boards/create/' + $window.sessionStorage.token);
     };
 
     board.deletBoard = function () {
-        return $http.delete(baseUrl + '/boards/create/' + $window.sessionStorage.token);
+        return $http.delete(baseUrl + '/boards/delete/' + $window.sessionStorage.token);
     };
 
     return board;

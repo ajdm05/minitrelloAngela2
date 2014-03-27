@@ -8,7 +8,6 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using MiniTrello.Api.App_Start;
 using MiniTrello.Api.Controllers;
 using MiniTrello.Infrastructure;
 
