@@ -80,6 +80,7 @@ angular.module('app.controllers')
                 .updateProfile($scope.updateProfileModel)
                 .success(function (data, status, headers, config) {
                     console.log(data);
+                    $location.path('/organizations');
                 })
                 .error(function (data, status, headers, config) {
                     console.log(data);
