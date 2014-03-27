@@ -77,7 +77,7 @@ namespace MiniTrello.Api.Controllers
 
         [AcceptVerbs ("PUT")]
         [PUT("updateProfile/{token}")]
-        public SuccessfulMessageResponse UpdateProfile([FromBody] AccountUpdateProfileModel model, string token)
+        public AccountUpdateProfileModel UpdateProfile([FromBody] AccountUpdateProfileModel model, string token)
         {
             var session = IsTokenExpired(token);
             if (session != null)
@@ -90,8 +90,18 @@ namespace MiniTrello.Api.Controllers
                 account.Initials = model.Initials;
                 account.Bio = model.Bio;
                 var accountUpdated = _writeOnlyRepository.Update(account);
+                var newAccount = new AccountUpdateProfileModel();
                 if (accountUpdated != null)
-                    return new SuccessfulMessageResponse("Your profile was successfully updated");
+                {
+                    newAccount.FirstName = accountUpdated.FirstName;
+                    newAccount.LastName = accountUpdated.LastName;
+                    newAccount.Bio = accountUpdated.Bio;
+                    newAccount.Initials = accountUpdated.Initials;
+                    newAccount.UserName = accountUpdated.UserName;
+                    return model;
+                }
+                    
+                //return new SuccessfulMessageResponse("Your profile was successfully updated");
             }
             throw new BadRequestException("Your profile could not be updated");
         }
