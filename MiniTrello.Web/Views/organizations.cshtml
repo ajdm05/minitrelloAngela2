@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
             <a href="/addOrganization" class="btn btn-link pull-left">Add Organization</a>
+            <a href="/updateProfile" class="btn btn-link pull-right">Update Profile</a>
         </div>
     </div>
     <div class="row" ng-repeat="organization in organizations">
@@ -25,7 +26,7 @@
 
                         <hr />
                         <div class="col-xs-1 col-sm-3 col-md-3">
-                            <button ng-click="archiveOrganizationForLoggedUser(organization.Id)" class="btn btn-lg btn-primary btn-block">Delet</button>
+                            <button type="submit" ng-click="archiveOrganizationForLoggedUser(organization.Id)" class="btn btn-primary btn-block btn-lg" tabindex="7">Delete</button>
                         </div>
                     </div>
                 </div>

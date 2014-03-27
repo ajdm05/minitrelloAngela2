@@ -8,11 +8,6 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     var baseLocalUrl = "http://localhost:8080";
     var baseUrl = baseRemoteUrl;
 
-    /*board.getBoardsForLoggedUser = function (organizationId) {
-        return $http.get(baseUrl + '/boards/' + $window.sessionStorage.organizationID + '/' + $window.sessionStorage.token);
-        //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
-    };*/
-
     board.getBoardsForLoggedUser = function (organizationId) {
         return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };

@@ -19,6 +19,7 @@ angular.module('app.controllers')
         
         $scope.loginModel = { Email: '', Password: '' };
         $scope.registerModel = { Email: '', Password: '', FirstName: '', LastName: '', ConfirmPassword: '' };
+        $scope.updateProfileModel = { FirstName: '', LastName: '', UserName: '', Bio: '', Initials: ''};
         
         
         // TODO: Authorize a user
@@ -71,6 +72,20 @@ angular.module('app.controllers')
                     $scope.errorMessage = 'Email is already registered';
                     $scope.hasError = true;
                     $scope.message = 'Email is already registered';
+                });
+        };
+
+        $scope.updateProfile = function () {
+            AccountServices
+                .updateProfile($scope.updateProfileModel)
+                .success(function (data, status, headers, config) {
+                    console.log(data);
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(data);
+                    $scope.errorMessage = 'Could not be updated';
+                    $scope.hasError = true;
+                    $scope.message = 'Could not be updated';
                 });
         };
 

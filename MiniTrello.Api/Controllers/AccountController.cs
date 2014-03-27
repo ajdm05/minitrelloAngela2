@@ -75,8 +75,8 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("The Email is already registered");
         }
 
-        //[AcceptVerbs ("PUT")]
-        [POST("updateProfile/{token}")]
+        [AcceptVerbs ("PUT")]
+        [PUT("updateProfile/{token}")]
         public SuccessfulMessageResponse UpdateProfile([FromBody] AccountUpdateProfileModel model, string token)
         {
             var session = IsTokenExpired(token);
@@ -89,7 +89,6 @@ namespace MiniTrello.Api.Controllers
                 account.UserName = model.UserName;
                 account.Initials = model.Initials;
                 account.Bio = model.Bio;
-                account.Email = model.Email;
                 var accountUpdated = _writeOnlyRepository.Update(account);
                 if (accountUpdated != null)
                     return new SuccessfulMessageResponse("Your profile was successfully updated");

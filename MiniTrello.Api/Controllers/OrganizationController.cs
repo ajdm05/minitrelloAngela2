@@ -51,6 +51,7 @@ namespace MiniTrello.Api.Controllers
             if (organization != null)
             {
                 var archivedOrganization = _writeOnlyRepository.Archive(organization);
+                return new SuccessfulMessageResponse("Organization has been removed");
             }
             throw new BadRequestException("Organization does not exist");  
         }

@@ -11,7 +11,6 @@ angular.module('app.controllers')
 
        $scope.boardDetailId = $stateParams.boardId;
        $scope.CreateNewBoardModel = { Title: '' };
-        //$scope.organizationID = $stateParams.organizationID;
         console.log($scope.boardDetailId);
         $scope.boards = [];
 
@@ -27,7 +26,6 @@ angular.module('app.controllers')
               .error(function (data, status, headers, config) {
                 console.log(data);
             });
-            //$location.path('/');
         };
 
         $scope.createNewBoardForLoggedUser = function () {
@@ -54,17 +52,8 @@ angular.module('app.controllers')
               });
         };
 
-    /*if ($scope.boardDetailId > 0)
-    {
-       //
-    }
-    else
-    {*/
         $scope.getBoardsForLoggedUser();
-    //}
     
-
-       
 
         $scope.$on('$viewContentLoaded', function () {
             $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });

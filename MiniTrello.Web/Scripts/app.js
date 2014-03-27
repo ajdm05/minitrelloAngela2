@@ -39,6 +39,12 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 templateUrl: '/views/register',
                 controller: 'AccountController'
             })
+            .state('updateProfile', {
+                url: '/updateProfile',
+                layout: 'basic',
+                templateUrl: '/views/updateProfile',
+                controller: 'AccountController'
+            })
             .state('boards', {
                 url: '/boards/:organizationId',
                 templateUrl: '/views/boards',
