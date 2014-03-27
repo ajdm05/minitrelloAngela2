@@ -32,7 +32,6 @@ angular.module('app.controllers')
               .error(function (data, status, headers, config) {
                   console.log(data);
               });
-            //$location.path('/');
         };
 
         $scope.createNewOrganizationForLoggedUser = function () {
@@ -46,7 +45,6 @@ angular.module('app.controllers')
               .error(function (data, status, headers, config) {
                   console.log(data);
               });
-            //$location.path('/organizations');
         };
 
         $scope.archiveOrganizationForLoggedUser = function (idOrganization) {

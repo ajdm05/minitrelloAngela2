@@ -1,10 +1,13 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MiniTrello.Api
+namespace MiniTrello.Api.App_Start
 {
     public class CorsHandler : DelegatingHandler
     {
@@ -56,6 +59,6 @@ namespace MiniTrello.Api
             {
                 return base.SendAsync(request, cancellationToken);
             }
-        } 
+        }
     }
 }
