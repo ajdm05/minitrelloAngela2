@@ -157,10 +157,12 @@ namespace MiniTrello.Api.Controllers
          
         }
         */
-        [GET("boards/{organizationId}/{token}")]
-        public List<BoardModel> GetAllForUser(string token, int organizationId)
+        //[GET("boards/{organizationId}/{token}")]
+        [GET("boards/{organizationId}")]
+        //public List<BoardModel> GetAllForUser(string token, int organizationId)
+        public List<BoardModel> GetAllForUser(int organizationId)
         {
-            var session = IsTokenExpired(token);
+            //var session = IsTokenExpired(token);
             var organization = _readOnlyRepository.GetById<Organization>(organizationId);
             if (organization != null)
             {
