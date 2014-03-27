@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app.services').factory('BoardServices', ['$http', '$window', function ($http, $window) {
+angular.module('app.services').factory('BoardServices', ['$http', '$window', '$stateParams', function ($http, $window, $stateParams) {
 
     var board = {};
 
@@ -8,10 +8,15 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     var baseLocalUrl = "http://localhost:8080";
     var baseUrl = baseRemoteUrl;
 
-    board.getBoardsForLoggedUser = function (organizationId) {
-        return $http.get(baseUrl + '/boards/' + organizationId);
+    board.getBoardsForLoggedUser = function () {
+        return $http.get(baseUrl + '/boards/' + $stateParams.organizationID + '/' + $window.sessionStorage.token);
         //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };
+
+    /*board.getBoardsForLoggedUser = function () {
+        return $http.get(baseUrl + '/boards/' + $scope.window.sessionStorage.token);
+        //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
+    };*/
 
     board.getBoardDetails = function () {
         return $http.get(baseUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);

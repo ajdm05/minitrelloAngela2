@@ -4,9 +4,6 @@
 // https://developers.google.com/analytics/devguides/collection/analyticsjs/
 
 angular.module('app.controllers')
-
-
-
     // Path: /login
    .controller('BoardController', ['$scope', '$location', '$window', '$stateParams', 'BoardServices', function ($scope, $location, $window, $stateParams, BoardServices) {
 
@@ -29,7 +26,7 @@ angular.module('app.controllers')
 
         $scope.getBoardsForLoggedUser = function () {
             BoardServices
-                .getBoardsForLoggedUser($stateParams.IdOrganization)
+                .getBoardsForLoggedUser()
               .success(function (data, status, headers, config) {
                     console.log(data);
                     $scope.boards = data;
