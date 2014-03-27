@@ -29,7 +29,7 @@ namespace MiniTrello.Api.Controllers
         }
 
 
-        [POST("/cards/create/{laneId}/{token}")]
+        [POST("cards/create/{laneId}/{token}")]
         public SuccessfulMessageResponse CreateCard([FromBody] CardsCreationModel model, string token, long laneId)
         {
             var session = IsTokenExpired(token);
@@ -56,7 +56,7 @@ namespace MiniTrello.Api.Controllers
           
         }
 
-        [POST("/cards/remove/{token}")]
+        [POST("cards/remove/{token}")]
         public SuccessfulMessageResponse DeletCard([FromBody] CardRemoveModel model, string token)
         {
             var session = IsTokenExpired(token);

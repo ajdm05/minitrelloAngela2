@@ -42,19 +42,7 @@ angular.module('app.controllers')
                   console.log(data);
               });
         };
-
-
-    /*if ($scope.boardDetailId > 0)
-    {
-       //
-    }
-    else
-    {*/
         $scope.getCardsForLoggedUser();
-    //}
-    
-
-       
 
         $scope.$on('$viewContentLoaded', function () {
             $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
