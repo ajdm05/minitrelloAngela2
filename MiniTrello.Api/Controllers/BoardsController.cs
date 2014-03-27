@@ -157,15 +157,15 @@ namespace MiniTrello.Api.Controllers
          
         }
         */
-        [GET("boards/{idOrganization}/{token}")]
-        public List<BoardModel> MyBoards(string token, int idOrganization)
+        [GET("boards/{organizationId}/{token}")]
+        public List<BoardModel> MyBoards(string token, int organizationId)
         {
             var session = IsTokenExpired(token);
-            var account = _readOnlyRepository.GetById<Organization>(idOrganization);
-            if (account != null)
+            var organization = _readOnlyRepository.GetById<Organization>(organizationId);
+            if (organization != null)
             {
                 var boards = new List<BoardModel>();
-                foreach (var member in account.Boards)
+                foreach (var member in organization.Boards)
                 {
                     if (member.IsArchived == false)
                     {
@@ -175,7 +175,7 @@ namespace MiniTrello.Api.Controllers
                 }
                 return boards;  
             }
-            throw new BadRequestException("You can't see the members of this Board");
+            throw new BadRequestException("You can't see your Boards");
 
         }
         [POST("/boards/{BoardId}/{token}")]

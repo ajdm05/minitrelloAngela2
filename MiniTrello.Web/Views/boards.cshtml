@@ -1,4 +1,9 @@
 ﻿<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="/addBoard" class="btn btn-link pull-left">Add Board</a>
+        </div>
+    </div>
     <div class="row" ng-repeat="board in boards">
         <div class="col-md-6">
             <div class="well well-sm">
@@ -8,7 +13,7 @@
                              class="img-rounded img-responsive" />
                     </div>
                     <div class="col-xs-9 col-md-9 section-box">
-                        <a href="./lane/{{board.Id}}">
+                        <a href="/lane/{{board.Id}}">
                             <h2>
                                 {{board.Title}}
                             </h2>

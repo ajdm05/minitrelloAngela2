@@ -23,6 +23,7 @@ namespace MiniTrello.Api
             Mapper.CreateMap<Lane, LanesCreationModel>().ReverseMap();
             Mapper.CreateMap<Card, CardsCreationModel>().ReverseMap();
             Mapper.CreateMap<BoardModel, Board>().ReverseMap();
+            Mapper.CreateMap<Board, BoardModel>().ReverseMap();
             Mapper.CreateMap<AccountModel, Account>().ReverseMap();
             Mapper.CreateMap<MyBoardsModel, Board>().ReverseMap();
             Mapper.CreateMap<BoardDetailsModel, Board>().ReverseMap();
