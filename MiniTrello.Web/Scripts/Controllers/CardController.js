@@ -11,7 +11,6 @@ angular.module('app.controllers')
 
        $scope.boardDetailId = $stateParams.boardId;
        $scope.CreateNewBoardModel = { Title: '' };
-        //$scope.organizationID = $stateParams.organizationID;
         console.log($scope.boardDetailId);
         $scope.cards = [];
 
@@ -27,7 +26,6 @@ angular.module('app.controllers')
               .error(function (data, status, headers, config) {
                 console.log(data);
             });
-            //$location.path('/');
         };
 
         $scope.createNewCardForLoggedUser = function () {

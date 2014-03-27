@@ -77,10 +77,10 @@ namespace MiniTrello.Api.Controllers
         }
 
         [GET("cards/{laneId}/{token}")]
-        public List<CardModel> GetAllForUser(string token, long boardId)
+        public List<CardModel> GetAllForUser(string token, long laneId)
         {
             var session = IsTokenExpired(token);
-            var lane = _readOnlyRepository.GetById<Lane>(boardId);
+            var lane = _readOnlyRepository.GetById<Lane>(laneId);
             if (lane != null)
             {
                 var cards = new List<CardModel>();

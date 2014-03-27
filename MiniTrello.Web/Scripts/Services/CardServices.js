@@ -14,6 +14,12 @@ angular.module('app.services').factory('CardServices', ['$http', '$window', func
         return $http.get(baseUrl + '/cards/' + laneId + '/' + $window.sessionStorage.token);
     };
 
+    card.createNewCardForLoggedUser = function (model, laneId) {
+        console.log("ParamLinkBoard");
+        console.log(laneId);
+        return $http.post(baseUrl + '/cards/create/' + laneId + '/' + $window.sessionStorage.token, model);
+    };
+
     return card;
 
 }]);
