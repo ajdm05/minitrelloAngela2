@@ -21,6 +21,8 @@ angular.module('app.services').factory('OrganizationServices', ['$http', '$windo
     organization.archiveOrganizationForLoggedUser = function (idOrganization) {
         console.log("ParamOrgaDele");
         console.log(idOrganization);
+        console.log("LinkDeleteOrg")
+        console.log(baseUrl + '/organization/delete/' + idOrganization + '/' + $window.sessionStorage.token);
         return $http.delete(baseUrl + '/organization/delete/' + idOrganization + '/' + $window.sessionStorage.token);
     };
     return organization;

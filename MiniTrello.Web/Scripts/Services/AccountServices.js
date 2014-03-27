@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app.services',[]).factory('AccountServices', ['$http', function ($http) {
+angular.module('app.services', []).factory('AccountServices', ['$http', '$window', function ($http, $window) {
 
     var account = {};
     
