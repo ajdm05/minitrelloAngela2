@@ -15,8 +15,7 @@ angular.module('app.controllers')
         //console.log($location.search().boardId);
         console.log($scope.boardDetailId);
         $scope.CreateNewOrganizationModel = { Title: '', Description: '' };
-        $scope.archiveOrganizationModel = { Id: null };
-        $scope.changeTitleOrganizationModel = { Id: 0, Title: '' };
+        $scope.archiveOrganizationModel = { Id: 0 };
         $scope.organizations = [];
 
         $scope.goToOrganizations = function () {
@@ -50,6 +49,17 @@ angular.module('app.controllers')
             //$location.path('/organizations');
         };
 
+        $scope.archiveOrganizationForLoggedUser = function (idOrganization) {
+            organizationServices
+                .archiveOrganizationForLoggedUser(idOrganization)
+              .success(function (data, status, headers, config) {
+                  console.log(data);
+                  $location.path('/organizations');
+              })
+              .error(function (data, status, headers, config) {
+                  console.log(data);
+              });
+        };
 
         //if ($scope.boardDetailId > 0) {
         //    //get board details

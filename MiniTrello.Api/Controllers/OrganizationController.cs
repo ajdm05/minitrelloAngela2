@@ -41,6 +41,19 @@ namespace MiniTrello.Api.Controllers
          
         }
 
+        [AcceptVerbs("DELETE")]
+        [DELETE("organization/{organizationId}/{token}")]
+        public SuccessfulMessageResponse Archive(long organizationId, string token)
+        {
+            var session = IsTokenExpired(token);
+            var organization = _readOnlyRepository.GetById<Organization>(organizationId);
+            if (organization != null)
+            {
+                var archivedOrganization = _writeOnlyRepository.Archive(organization);
+            }
+            throw new BadRequestException("Organization does not exist");  
+        }
+
         [POST("organizations/addBoard/{token}")]
         public SuccessfulMessageResponse AddBoardToOrganization([FromBody] AddBoardToOrganizationModel model, string token)
         {
@@ -81,18 +94,6 @@ namespace MiniTrello.Api.Controllers
              throw new BadRequestException("You can't see the members of this Board");
 
          }
-        /*[GET("organizations/{token}")]
-        public List<OrganizationModel> GetAllForUser(string token)
-        {
-            var session = IsTokenExpired(token);
-            //obtener el usuario que pertenece al token
-            //validar la session
-            //var account = _readOnlyRepository.GetById<Account>(1);
-            //var mappedOrganizationModelList = _mappingEngine.Map<IEnumerable<Organization>, IEnumerable<OrganizationModel>>(session.User.Organizations).ToList();
-            //return mappedOrganizationModelList;
-            var organizations = Builder<OrganizationModel>.CreateListOfSize(10).Build().ToList();
-            return organizations;
-        }*/
 
         public Sessions IsTokenExpired(string token)
         {

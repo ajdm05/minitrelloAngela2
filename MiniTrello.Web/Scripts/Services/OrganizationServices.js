@@ -18,8 +18,8 @@ angular.module('app.services').factory('OrganizationServices', ['$http', '$windo
         return $http.post(baseUrl + '/organizations/create/' + $window.sessionStorage.token, model);
     };
 
-    organization.archiveOrganizationForLoggedUser = function () {
-        return $http.get(baseUrl + '/organizations/delete/' + $window.sessionStorage.token);
+    organization.archiveOrganizationForLoggedUser = function (idOrganization) {
+        return $http.delete(baseUrl + '/organization/delete/' + idOrganization + '/' + $window.sessionStorage.token);
     };
     return organization;
 
