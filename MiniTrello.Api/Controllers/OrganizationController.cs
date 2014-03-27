@@ -42,7 +42,7 @@ namespace MiniTrello.Api.Controllers
         }
 
         [AcceptVerbs("DELETE")]
-        [DELETE("organization/{organizationId}/{token}")]
+        [DELETE("organization/delete/{organizationId}/{token}")]
         public SuccessfulMessageResponse Archive(long organizationId, string token)
         {
             var session = IsTokenExpired(token);

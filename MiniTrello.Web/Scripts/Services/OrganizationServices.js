@@ -19,7 +19,7 @@ angular.module('app.services').factory('OrganizationServices', ['$http', '$windo
     };
 
     organization.archiveOrganizationForLoggedUser = function (idOrganization) {
-        return $http.delete(baseUrl + '/organization/delete/' + idOrganization + '/' + $window.sessionStorage.token);
+        return $http.put(baseUrl + '/organization/delete/' + idOrganization + '/' + $window.sessionStorage.token);
     };
     return organization;
 
