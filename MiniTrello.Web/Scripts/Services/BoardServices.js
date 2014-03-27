@@ -14,17 +14,15 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     };*/
 
     board.getBoardsForLoggedUser = function (organizationId) {
-
-        return $http.get(baseUrl + '/boards/' + organizationId + '/' + $scope.window.sessionStorage.token);
-        //return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
+        return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };
 
     board.getBoardDetails = function () {
         return $http.get(baseUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);
     };
 
-    board.createNewBoardForLoggedUser = function () {
-        return $http.post(baseUrl + '/boards/create/' + $window.sessionStorage.token);
+    board.createNewBoardForLoggedUser = function (model, idOrganization) {
+        return $http.post(baseUrl + '/boards/create/' + idOrganization + '/' + $window.sessionStorage.token, model);
     };
 
     board.deletBoard = function () {

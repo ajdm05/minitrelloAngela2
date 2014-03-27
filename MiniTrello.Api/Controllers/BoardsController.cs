@@ -52,16 +52,18 @@ namespace MiniTrello.Api.Controllers
         }
 
         [HttpPost]
-        [POST("/boards/create/{token}")]
-        public BoardModel CreateBoard([FromBody] BoardsCreationModel model, string token)
+        [POST("boards/create/{idOrganization}/{token}")]
+        public BoardModel CreateBoard([FromBody] BoardsCreationModel model, string token,long idOrganization)
         {
             var session = IsTokenExpired(token);
             var account = _readOnlyRepository.First<Account>(account1 => account1.Id == session.User.Id);
+            var organization = _readOnlyRepository.GetById<Organization>(idOrganization);
             var boardToAdd = _mappingEngine.Map<BoardsCreationModel, Board>(model);
             boardToAdd.Administrador = account;
             boardToAdd.AddMember(account);
             boardToAdd.IsArchived = false;
             account.AddBoard(boardToAdd);
+            organization.AddBoard(boardToAdd);
             Board boardCreated = _writeOnlyRepository.Create(boardToAdd);
             if (boardCreated != null)
             {

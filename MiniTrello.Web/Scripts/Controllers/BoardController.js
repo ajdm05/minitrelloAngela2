@@ -10,24 +10,19 @@ angular.module('app.controllers')
 
 
        $scope.boardDetailId = $stateParams.boardId;
-       $scope.CreateNewBoardModel = { Title: ''};
+       $scope.CreateNewBoardModel = { Title: '' };
         //$scope.organizationID = $stateParams.organizationID;
         console.log($scope.boardDetailId);
-
         $scope.boards = [];
 
-       // var board = { Id: 1, Name: 'Myboard1', Description: 'Description1' };
-       // var board1 = { Id: 2, Name: 'Myboard2', Description: 'Description2' };
-       // $scope.boards.push(board);
-       // $scope.boards.push(board1);
-        
-
         $scope.getBoardsForLoggedUser = function () {
+            console.log("Param");
+            console.log($stateParams.organizationId);
             BoardServices
                 .getBoardsForLoggedUser($stateParams.organizationId)
               .success(function (data, status, headers, config) {
-                    console.log(data);
-                    $scope.boards = data;
+                  $scope.boards = data;
+                  console.log(data);
                 })
               .error(function (data, status, headers, config) {
                 console.log(data);
@@ -36,8 +31,10 @@ angular.module('app.controllers')
         };
 
         $scope.createNewBoardForLoggedUser = function () {
+            console.log("Param");
+            console.log($stateParams.organizationId);
             BoardServices
-                .createNewBoardForLoggedUser($scope.CreateNewBoardModel)
+                .createNewBoardForLoggedUser($scope.CreateNewBoardModel, $stateParams.organizationId)
               .success(function (data, status, headers, config) {
                   console.log(data);
                   $scope.boards.push(data);
@@ -65,7 +62,7 @@ angular.module('app.controllers')
     }
     else
     {*/
-        //$scope.getBoardsForLoggedUser();
+        $scope.getBoardsForLoggedUser();
     //}
     
 
