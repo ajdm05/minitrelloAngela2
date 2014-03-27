@@ -1,7 +1,7 @@
 ﻿using System;
 using MiniTrello.Domain.Entities;
 
-namespace MiniTrello.Api.Models
+namespace MiniTrello.Domain.DataObjects
 {
     public class SessionModel
     {
