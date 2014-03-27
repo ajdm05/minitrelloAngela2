@@ -10,8 +10,7 @@ angular.module('app.controllers')
 
 
        $scope.boardDetailId = $stateParams.boardId;
-       $scope.CreateNewLaneModel = { Title: '' };
-        //$scope.organizationID = $stateParams.organizationID;
+       $scope.CreateNewLaneModel = { Title: ''};
         console.log($scope.boardDetailId);
         $scope.lanes = [];
 
@@ -34,11 +33,10 @@ angular.module('app.controllers')
             console.log("ParamCreateLane");
             console.log($stateParams.boardId);
             LaneServices
-                .createNewLaneForLoggedUser($scope.CreateLaneBoardModel, $stateParams.boardId)
+                .createNewLaneForLoggedUser($scope.CreateNewLaneModel, $stateParams.boardId)
               .success(function (data, status, headers, config) {
                   console.log(data);
                   $scope.lanes.push(data);
-
               })
               .error(function (data, status, headers, config) {
                   console.log(data);

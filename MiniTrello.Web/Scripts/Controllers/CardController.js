@@ -10,7 +10,7 @@ angular.module('app.controllers')
 
 
        $scope.boardDetailId = $stateParams.boardId;
-       $scope.CreateNewBoardModel = { Title: '' };
+       $scope.CreateNewCardModel = { Text: '' };
         console.log($scope.boardDetailId);
         $scope.cards = [];
 
@@ -35,7 +35,7 @@ angular.module('app.controllers')
                 .createNewCardForLoggedUser($scope.CreateNewCardModel, $stateParams.laneId)
               .success(function (data, status, headers, config) {
                   console.log(data);
-                  $scope.boards.push(data);
+                  $scope.cards.push(data);
 
               })
               .error(function (data, status, headers, config) {
