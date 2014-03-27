@@ -2,6 +2,26 @@
     PageData["title"] = "MiniTrello | Lanes";
 }
 <div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-2">
+            <form role="form">
+                <fieldset>
+                    <h2>Add a New Lane</h2>
+                    <hr class="colorgraph">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="title" id="title" ng-model="CreateNewLaneModel.Title" class="form-control input-lg" placeholder="Title" tabindex="1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <button type="submit" ng-click="createNewLaneForLoggedUser()" class="btn btn-primary btn-block btn-lg" tabindex="7">Add Lane</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
     <div class="row" ng-repeat="lane in lanes">
         <div class="col-md-6">
             <div class="well well-sm">
