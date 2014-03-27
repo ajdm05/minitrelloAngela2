@@ -174,6 +174,7 @@ namespace MiniTrello.Api.Controllers
                     if (member.IsArchived == false)
                     {
                         var myBoards = _mappingEngine.Map<Board, BoardModel>(member);
+                        myBoards.OrganizationId = organization.Id;
                         boards.Add(myBoards);
                     }
                 }

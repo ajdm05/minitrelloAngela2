@@ -38,6 +38,7 @@ angular.module('app.controllers')
               .success(function (data, status, headers, config) {
                   console.log(data);
                   $scope.boards.push(data);
+
               })
               .error(function (data, status, headers, config) {
                   console.log(data);
@@ -53,7 +54,6 @@ angular.module('app.controllers')
               .error(function (data, status, headers, config) {
                   console.log(data);
               });
-            //$location.path('/');
         };
 
     /*if ($scope.boardDetailId > 0)

@@ -39,7 +39,7 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 templateUrl: '/views/register',
                 controller: 'AccountController'
             })
-            .state('boards/:organizationId', {
+            .state('boards', {
                 url: '/boards/:organizationId',
                 templateUrl: '/views/boards',
                 controller: 'BoardController'
