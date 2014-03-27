@@ -29,11 +29,11 @@ namespace MiniTrello.Api.Controllers
             _mappingEngine = mappingEngine;
         }
 
-        [POST("/lanes/create/{token}")]
-        public SuccessfulMessageResponse CreateLane([FromBody] LanesCreationModel model, string token)
+        [POST("/lanes/create/{boardId}/{token}")]
+        public SuccessfulMessageResponse CreateLane([FromBody] LanesCreationModel model, string token, long boardId)
         {
             var session = IsTokenExpired(token);
-            var boardToAddLane1 = _readOnlyRepository.GetById<Board>(model.Board_id);
+            var boardToAddLane1 = _readOnlyRepository.GetById<Board>(boardId);
             if (boardToAddLane1 != null)
             {
                 var laneToAdd = _mappingEngine.Map<LanesCreationModel, Lane>(model);
