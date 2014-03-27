@@ -29,11 +29,11 @@ namespace MiniTrello.Api.Controllers
         }
 
 
-        [POST("/cards/create/{token}")]
-        public SuccessfulMessageResponse CreateCard([FromBody] CardsCreationModel model, string token)
+        [POST("/cards/create/{laneId}/{token}")]
+        public SuccessfulMessageResponse CreateCard([FromBody] CardsCreationModel model, string token, long laneId)
         {
             var session = IsTokenExpired(token);
-            var laneToAddCard = _readOnlyRepository.GetById<Lane>(model.Lane_id);
+            var laneToAddCard = _readOnlyRepository.GetById<Lane>(laneId);
             var board = _readOnlyRepository.First<Board>(board1 => board1.Lanes.Contains(laneToAddCard));
             var account = _readOnlyRepository.First<Account>(account1 => account1.Id == session.User.Id);
             if (laneToAddCard != null && account != null)
