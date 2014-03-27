@@ -12,8 +12,10 @@ angular.module('app.services').factory('OrganizationServices', ['$http', '$windo
         return $http.get(baseUrl + '/organizations/' + $window.sessionStorage.token);
     };
 
-    organization.createNewOrganizationForLoggedUser = function (data) {
-        return $http.get(baseUrl + '/organizations/create/' + $window.sessionStorage.token, data);
+    organization.createNewOrganizationForLoggedUser = function (model) {
+        console.log(baseUrl + '/organizations/create/' + $window.sessionStorage.token);
+        console.log("model:" + model);
+        return $http.post(baseUrl + '/organizations/create/' + $window.sessionStorage.token, model);
     };
 
     organization.archiveOrganizationForLoggedUser = function () {

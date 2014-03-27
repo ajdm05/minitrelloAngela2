@@ -59,7 +59,7 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Board could not be added");
         }
 
-        [GET("organizations/{token}")]
+        [POST("organizations/{token}")]
          public List<OrganizationModel> GetAllForUser(string token)
          {
              var session = IsTokenExpired(token);
