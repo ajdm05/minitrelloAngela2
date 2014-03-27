@@ -44,6 +44,7 @@ angular.module('app.controllers')
         };
 
         $scope.archiveOrganizationForLoggedUser = function (idOrganization) {
+            console.log(idOrganization);
             organizationServices
                 .archiveOrganizationForLoggedUser(idOrganization)
               .success(function (data, status, headers, config) {

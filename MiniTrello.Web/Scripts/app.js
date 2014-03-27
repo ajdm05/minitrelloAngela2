@@ -51,8 +51,8 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 controller: 'BoardController'
             })
             .state('boardMembers', {
-                url: '/boardMembers/:boardId',
-                templateUrl: '/views/boardMembers',
+                url: '/boardsMembers/:boardId',
+                templateUrl: '/views/boardsMembers',
                 controller: 'BoardController'
             })
             .state('addBoard', {

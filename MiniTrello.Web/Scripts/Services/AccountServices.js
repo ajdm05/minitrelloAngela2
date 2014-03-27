@@ -23,7 +23,7 @@ angular.module('app.services', []).factory('AccountServices', ['$http', '$window
     account.updateProfile = function (model) {
         console.log("ModelUpdate");
         console.log(model);
-        return $http.put(baseUrl + '/updateProfile' + $window.sessionStorage.token, model);
+        return $http.put(baseUrl + '/updateProfile/' + $window.sessionStorage.token, model);
     };
 
     return account;

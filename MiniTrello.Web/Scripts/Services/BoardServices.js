@@ -13,6 +13,8 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     };
 
     board.getMembersForBoard = function (boardId) {
+        console.log("BoardIdMembers");
+        console.log(boardId);
         return $http.get(baseUrl + '/boards/boardMembers/' + boardId + '/' + $window.sessionStorage.token);
     };
 

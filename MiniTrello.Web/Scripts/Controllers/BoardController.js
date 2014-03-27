@@ -45,9 +45,8 @@ angular.module('app.controllers')
             BoardServices
                 .getMembersForBoard($stateParams.boardId)
               .success(function (data, status, headers, config) {
+                    console.log("BoardId:" + $stateParams.boardId);
                   console.log(data);
-                  $scope.boards.push(data);
-
               })
               .error(function (data, status, headers, config) {
                   console.log(data);
