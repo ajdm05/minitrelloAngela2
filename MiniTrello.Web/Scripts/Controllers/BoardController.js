@@ -31,8 +31,6 @@ angular.module('app.controllers')
         };
 
         $scope.createNewBoardForLoggedUser = function () {
-            console.log("Param");
-            console.log($stateParams.organizationId);
             BoardServices
                 .createNewBoardForLoggedUser($scope.CreateNewBoardModel, $stateParams.organizationId)
               .success(function (data, status, headers, config) {

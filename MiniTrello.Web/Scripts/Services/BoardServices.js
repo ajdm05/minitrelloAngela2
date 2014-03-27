@@ -22,8 +22,6 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
     };
 
     board.createNewBoardForLoggedUser = function (model, idOrganization) {
-        console.log("ParamLink");
-        console.log(idOrganization);
         return $http.post(baseUrl + '/boards/create/' + idOrganization + '/' + $window.sessionStorage.token, model);
     };
 

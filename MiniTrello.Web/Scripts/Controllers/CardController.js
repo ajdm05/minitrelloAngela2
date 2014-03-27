@@ -5,7 +5,7 @@
 
 angular.module('app.controllers')
     // Path: /login
-   .controller('BoardController', ['$scope', '$location', '$window', '$stateParams', 'BoardServices', function ($scope, $location, $window, $stateParams, BoardServices) {
+   .controller('CardController', ['$scope', '$location', '$window', '$stateParams', 'CardServices', function ($scope, $location, $window, $stateParams, CardServices) {
 
 
 
@@ -13,15 +13,15 @@ angular.module('app.controllers')
        $scope.CreateNewBoardModel = { Title: '' };
         //$scope.organizationID = $stateParams.organizationID;
         console.log($scope.boardDetailId);
-        $scope.boards = [];
+        $scope.cards = [];
 
-        $scope.getBoardsForLoggedUser = function () {
-            console.log("Param");
-            console.log($stateParams.organizationId);
-            BoardServices
-                .getBoardsForLoggedUser($stateParams.organizationId)
+        $scope.getCardsForLoggedUser = function () {
+            console.log("ParamCards");
+            console.log($stateParams.laneId);
+            CardServices
+                .getCardsForLoggedUser($stateParams.laneId)
               .success(function (data, status, headers, config) {
-                  $scope.boards = data;
+                  $scope.cards = data;
                   console.log(data);
                 })
               .error(function (data, status, headers, config) {
@@ -30,11 +30,11 @@ angular.module('app.controllers')
             //$location.path('/');
         };
 
-        $scope.createNewBoardForLoggedUser = function () {
-            console.log("Param");
-            console.log($stateParams.organizationId);
-            BoardServices
-                .createNewBoardForLoggedUser($scope.CreateNewBoardModel, $stateParams.organizationId)
+        $scope.createNewCardForLoggedUser = function () {
+            console.log("ParamCreateCard");
+            console.log($stateParams.laneId);
+            CardServices
+                .createNewCardForLoggedUser($scope.CreateNewCardModel, $stateParams.laneId)
               .success(function (data, status, headers, config) {
                   console.log(data);
                   $scope.boards.push(data);
@@ -45,16 +45,6 @@ angular.module('app.controllers')
               });
         };
 
-        $scope.getBoardsDetails = function () {
-            BoardServices
-                .getBoardDetails()
-              .success(function (data, status, headers, config) {
-                  $scope.boards = data;
-              })
-              .error(function (data, status, headers, config) {
-                  console.log(data);
-              });
-        };
 
     /*if ($scope.boardDetailId > 0)
     {
@@ -62,7 +52,7 @@ angular.module('app.controllers')
     }
     else
     {*/
-        $scope.getBoardsForLoggedUser();
+        $scope.getCardsForLoggedUser();
     //}
     
 

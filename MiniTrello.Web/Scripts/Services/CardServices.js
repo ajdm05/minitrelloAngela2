@@ -8,8 +8,10 @@ angular.module('app.services').factory('CardServices', ['$http', '$window', func
     var baseLocalUrl = "http://localhost:8080";
     var baseUrl = baseRemoteUrl;
 
-    card.getCardsForLane = function() {
-        return $http.get(baseUrl + '/cards/' + $window.sessionStorage.token);
+    card.getCardsForLoggedUser = function (laneId) {
+        console.log("ParamCardLink");
+        console.log(laneId);
+        return $http.get(baseUrl + '/cards/' + laneId + '/' + $window.sessionStorage.token);
     };
 
     return card;

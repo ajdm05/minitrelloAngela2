@@ -13,7 +13,7 @@ angular.module('app.services').factory('LaneServices', ['$http', '$window', func
     };
 
     lane.createNewLaneForLoggedUser = function (model, idBoard) {
-        console.log("ParamLink");
+        console.log("ParamLinkBoard");
         console.log(idBoard);
         return $http.post(baseUrl + '/lanes/create/' + idBoard + '/' + $window.sessionStorage.token, model);
     };

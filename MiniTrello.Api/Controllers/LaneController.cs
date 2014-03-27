@@ -29,7 +29,7 @@ namespace MiniTrello.Api.Controllers
             _mappingEngine = mappingEngine;
         }
 
-        [POST("/lanes/create/{boardId}/{token}")]
+        [POST("lanes/create/{boardId}/{token}")]
         public SuccessfulMessageResponse CreateLane([FromBody] LanesCreationModel model, string token, long boardId)
         {
             var session = IsTokenExpired(token);
@@ -66,7 +66,6 @@ namespace MiniTrello.Api.Controllers
                 return lanes;
             }
             throw new BadRequestException("You can't see your Boards");
-
         }
 
         public Sessions IsTokenExpired(string token)

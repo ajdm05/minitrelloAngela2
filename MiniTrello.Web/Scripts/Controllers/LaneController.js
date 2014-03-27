@@ -16,7 +16,7 @@ angular.module('app.controllers')
         $scope.lanes = [];
 
         $scope.getLanesForLoggedUser = function () {
-            console.log("Param");
+            console.log("ParamLanes");
             console.log($stateParams.boardId);
             LaneServices
                 .getLanesForLoggedUser($stateParams.boardId)
@@ -31,7 +31,7 @@ angular.module('app.controllers')
         };
 
         $scope.createNewLaneForLoggedUser = function () {
-            console.log("Param");
+            console.log("ParamCreateLane");
             console.log($stateParams.boardId);
             LaneServices
                 .createNewLaneForLoggedUser($scope.CreateLaneBoardModel, $stateParams.boardId)

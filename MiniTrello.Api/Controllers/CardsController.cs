@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -75,6 +76,27 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Card could not be removed");   
         }
 
+        [GET("cards/{laneId}/{token}")]
+        public List<CardModel> GetAllForUser(string token, long boardId)
+        {
+            var session = IsTokenExpired(token);
+            var lane = _readOnlyRepository.GetById<Lane>(boardId);
+            if (lane != null)
+            {
+                var cards = new List<CardModel>();
+                foreach (var member in lane.Cards)
+                {
+                    if (member.IsArchived == false)
+                    {
+                        var myCards = _mappingEngine.Map<Card, CardModel>(member);
+                        cards.Add(myCards);
+                    }
+                }
+                return cards;
+            }
+            throw new BadRequestException("You can't see your Boards");
+
+        }
         [POST("/cards/move/{token}")]
         public SuccessfulMessageResponse MoveCard([FromBody] CardMovedModel model, string token)
         {

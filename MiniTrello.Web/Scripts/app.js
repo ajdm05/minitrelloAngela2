@@ -59,6 +59,11 @@ angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directiv
                 templateUrl: '/views/lanes',
                 controller: 'LaneController'
             })
+            .state('cards', {
+                url: '/cards/:laneId',
+                templateUrl: '/views/cards',
+                controller: 'CardController'
+            })
             .state('forgotPassword', {
                 url: '/forgotPassword',
                 templateUrl: '/views/forgotPassword',
