@@ -30,7 +30,8 @@ namespace MiniTrello.Api.Controllers
             _mappingEngine = mappingEngine;
         }
 
-        [POST("/organizations/create/{token}")]
+        [HttpPost]
+        [POST("organizations/create/{token}")]
         public SuccessfulMessageResponse CreateOrganization([FromBody] OrganizationCreationModel model, string token)
         {
             var session = IsTokenExpired(token);
@@ -40,7 +41,7 @@ namespace MiniTrello.Api.Controllers
          
         }
 
-        [POST("/organizations/addBoard/{token}")]
+        [POST("organizations/addBoard/{token}")]
         public SuccessfulMessageResponse AddBoardToOrganization([FromBody] AddBoardToOrganizationModel model, string token)
         {
             var session = IsTokenExpired(token);

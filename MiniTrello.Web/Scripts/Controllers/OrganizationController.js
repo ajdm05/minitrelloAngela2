@@ -14,7 +14,7 @@ angular.module('app.controllers')
         $scope.organizationId = $stateParams.organizationId;
         //console.log($location.search().boardId);
         console.log($scope.boardDetailId);
-        $scope.addNewOrganizationModel = { Title: '', Description: '' };
+        $scope.CreateNewOrganizationModel = { Title: '', Description: '' };
         $scope.archiveOrganizationModel = { Id: null };
         $scope.changeTitleOrganizationModel = { Id: 0, Title: '' };
         $scope.organizations = [];
@@ -38,16 +38,16 @@ angular.module('app.controllers')
 
         $scope.createNewOrganizationForLoggedUser = function () {
             organizationServices
-                .createNewOrganizationForLoggedUser($scope.createNewOrganizationModel)
+                .createNewOrganizationForLoggedUser($scope.CreateNewOrganizationModel)
               .success(function (data, status, headers, config) {
                   console.log(data);
                   $scope.organizations.push(data);
-                  $scope.goToOrganizations();
+                  $location.path('/organizations');
                 })
               .error(function (data, status, headers, config) {
                   console.log(data);
               });
-            //$location.path('/');
+            //$location.path('/organizations');
         };
 
 

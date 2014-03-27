@@ -12,16 +12,20 @@
             <fieldset>
                 <h2>Add a New Organization</h2>
                 <hr class="colorgraph">
-                <div class="form-group">
-                    <input type="title" name="title" ng-model="CreateNewOrganizationModel.Title" id="title" class="form-control input-lg" placeholder="Title">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="title" id="title" ng-model="CreateNewOrganizationModel.Title" class="form-control input-lg" placeholder="Title" tabindex="1">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="description" name="description" id="description" ng-model="CreateNewOrganizationModel.Descrption" class="form-control input-lg" placeholder="Description">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="description" id="description" ng-model="CreateNewOrganizationModel.Description" class="form-control input-lg" placeholder="Description" tabindex="2">
+                    </div>
                 </div>
                 <hr class="colorgraph">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <button ng-click="createNewOrganizationForLoggedUser()" class="btn btn-lg btn-primary btn-block">Add Organization</button>
+                    <div class="col-xs-12 col-md-6">
+                        <button type="submit" ng-click="createNewOrganizationForLoggedUser()" class="btn btn-primary btn-block btn-lg" tabindex="7">Add Organization</button>
                     </div>
                 </div>
             </fieldset>
