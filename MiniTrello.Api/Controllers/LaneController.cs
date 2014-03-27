@@ -47,6 +47,28 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("Lane could not be created");
         }
 
+        [GET("lanes/{boardId}/{token}")]
+        public List<LaneModel> GetAllForUser(string token, long boardId)
+        {
+            var session = IsTokenExpired(token);
+            var board = _readOnlyRepository.GetById<Board>(boardId);
+            if (board != null)
+            {
+                var lanes = new List<LaneModel>();
+                foreach (var member in board.Lanes)
+                {
+                    if (member.IsArchived == false)
+                    {
+                        var myLanes = _mappingEngine.Map<Lane, LaneModel>(member);
+                        lanes.Add(myLanes);
+                    }
+                }
+                return lanes;
+            }
+            throw new BadRequestException("You can't see your Boards");
+
+        }
+
         public Sessions IsTokenExpired(string token)
         {
             var session = _readOnlyRepository.First<Sessions>(session1 => session1.Token == token);

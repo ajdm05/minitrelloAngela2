@@ -8,8 +8,14 @@ angular.module('app.services').factory('LaneServices', ['$http', '$window', func
     var baseLocalUrl = "http://localhost:8080";
     var baseUrl = baseRemoteUrl;
 
-    lane.getLanesForBoard = function() {
-        return $http.get(baseUrl + '/lanes/' + $window.sessionStorage.token);
+    lane.getLanesForLoggedUser = function (boardId) {
+        return $http.get(baseUrl + '/lanes/' + boardId + '/' + $window.sessionStorage.token);
+    };
+
+    lane.createNewLaneForLoggedUser = function (model, idBoard) {
+        console.log("ParamLink");
+        console.log(idBoard);
+        return $http.post(baseUrl + '/lanes/create/' + idBoard + '/' + $window.sessionStorage.token, model);
     };
 
     return lane;

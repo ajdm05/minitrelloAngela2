@@ -155,8 +155,10 @@
     <Content Include="Scripts\Controllers\AboutController.js" />
     <Content Include="Scripts\Controllers\AccountController.js" />
     <Content Include="Scripts\Controllers\BoardController.js" />
+    <Content Include="Scripts\Controllers\CardController.js" />
     <Content Include="Scripts\Controllers\ErrorController.js" />
     <Content Include="Scripts\Controllers\HomeController.js" />
+    <Content Include="Scripts\Controllers\LaneController.js" />
     <Content Include="Scripts\Controllers\OrganizationController.js" />
     <Content Include="Scripts\Directives\directives.js" />
     <Content Include="Scripts\Directives\directives.spec.js">
