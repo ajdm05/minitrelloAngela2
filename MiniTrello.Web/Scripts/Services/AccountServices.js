@@ -21,7 +21,7 @@ angular.module('app.services',[]).factory('AccountServices', ['$http', function 
     };
 
     account.updateProfile = function(model) {
-        return $http.post(baseUrl + '/updateProfile' + $window.sessionStorage.token, model);
+        return $http.put(baseUrl + '/updateProfile' + $window.sessionStorage.token, model);
     };
 
     return account;
