@@ -41,6 +41,19 @@ angular.module('app.controllers')
               });
         };
 
+        $scope.getMembersForBoard = function () {
+            BoardServices
+                .getMembersForBoard($stateParams.boardId)
+              .success(function (data, status, headers, config) {
+                  console.log(data);
+                  $scope.boards.push(data);
+
+              })
+              .error(function (data, status, headers, config) {
+                  console.log(data);
+              });
+        };
+
         $scope.getBoardsDetails = function () {
             BoardServices
                 .getBoardDetails()

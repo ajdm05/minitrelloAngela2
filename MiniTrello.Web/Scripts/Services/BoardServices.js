@@ -12,6 +12,10 @@ angular.module('app.services').factory('BoardServices', ['$http', '$window', fun
         return $http.get(baseUrl + '/boards/' + organizationId + '/' + $window.sessionStorage.token);
     };
 
+    board.getMembersForBoard = function (boardId) {
+        return $http.get(baseUrl + '/boards/boardMembers/' + boardId + '/' + $window.sessionStorage.token);
+    };
+
     board.getBoardDetails = function () {
         return $http.get(baseUrl + '/boards/' + $window.sessionStorage.id + '/' + $window.sessionStorage.token);
     };

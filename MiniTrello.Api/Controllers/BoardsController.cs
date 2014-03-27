@@ -116,11 +116,12 @@ namespace MiniTrello.Api.Controllers
             throw new BadRequestException("You aren't the administrator of the Board");
         }
 
-        [POST("/boards/boardMembers/{token}")]
-        public BoardMembersModel MembersList([FromBody] BoardsMembersList model, string token)
+        [GET("boards/boardMembers/{boardId}/{token}")]
+        public BoardMembersModel MembersList([FromBody] BoardsMembersList model, string token,long boardId)
         {
             var session = IsTokenExpired(token);
-            var boardToSee = _readOnlyRepository.First<Board>(board1 => board1.Id == model.BoardId);
+            var boardToSee = _readOnlyRepository.GetById<Board>(boardId);
+            
             if (boardToSee != null)
             {
                 var memberS = new BoardMembersModel();

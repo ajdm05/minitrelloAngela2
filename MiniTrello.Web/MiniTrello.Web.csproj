@@ -528,6 +528,7 @@
     <Content Include="Views\putToken.cshtml" />
     <Content Include="Views\addOrganization.cshtml" />
     <Content Include="Views\updateProfile.cshtml" />
+    <Content Include="Views\boardsMembers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
